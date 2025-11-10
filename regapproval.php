@@ -11,5 +11,4 @@ if($result){
         die(mysqli_error($con));
     }
     
-
 ?>

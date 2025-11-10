@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] =='POST') {
                         $response["message"] = "You have successfully registered";
 
                         echo json_encode($response);
-//                    mysqli_close($con);
+//                   mysqli_close($con);
 
                     } else {
 
