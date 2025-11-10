@@ -64,7 +64,7 @@ include('dbconnect.php')
                                 $id=$row['employer_id'];
                                 $name=$row['company_name'];
                                 $contacts=$row['contacts'];
-                                $email=$row['email'];
+                                $email=$row['email_address'];
                                 $industry=$row['industry'];
                                 $location=$row['location'];
                                 $Approval=$row['status'];
