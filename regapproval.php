@@ -1,4 +1,5 @@
 <?php
+
 include("dbconnect.php");
 
 $id=$_GET['updateid'];
@@ -10,5 +11,5 @@ if($result){
 }else{
         die(mysqli_error($con));
     }
-    
+
 ?>
