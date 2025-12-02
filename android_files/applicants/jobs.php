@@ -16,7 +16,7 @@ $select = "SELECT
             e.employer_id,
             e.company_name, 
             e.contacts, 
-            e.email, 
+            e.email_address, 
             e.industry, 
             e.description AS employer_description
         FROM jobs j
@@ -49,7 +49,7 @@ if ($records && mysqli_num_rows($records) > 0) {
         $temp['employer_id'] = $row['employer_id'];
         $temp['company_name'] = $row['company_name'];
         $temp['contacts'] = $row['contacts'];
-        $temp['email'] = $row['email'];
+        $temp['email'] = $row['email_address'];
         $temp['industry'] = $row['industry'];
         $temp['employer_description'] = $row['employer_description'];
 
