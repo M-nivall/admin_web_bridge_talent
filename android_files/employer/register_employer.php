@@ -56,8 +56,8 @@ if ($_SERVER['REQUEST_METHOD'] =='POST') {
 
                 } else {
 
-                    $insert = "INSERT INTO employers(company_name, username, contacts, email_address, industry,location, website, description)
-                VALUES ('$company_name','$username','$phoneNo','$email','$industry','$location', '$website','$company_description')";
+                    $insert = "INSERT INTO employers(company_name, username, password, contacts, email_address, industry,location, website, description)
+                VALUES ('$company_name','$username','$password',$phoneNo','$email','$industry','$location', '$website','$company_description')";
                     if (mysqli_query($con, $insert)) {
 
                         $response["status"] = 1;

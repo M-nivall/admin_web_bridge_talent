@@ -9,7 +9,6 @@ if ($_SERVER['REQUEST_METHOD'] =='POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-
     if ( empty($username) ||empty($password)) {
         $response["status"] = 0;
         $response["message"] = "Enter both username and password ";

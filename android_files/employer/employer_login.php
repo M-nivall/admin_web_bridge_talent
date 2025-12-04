@@ -8,51 +8,57 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = $_POST['password'];
 
     if (empty($username) || empty($password)) {
-        $response["status"] = 0;
-        $response["message"] = "Enter both username and password";
-        echo json_encode($response);
-        mysqli_close($con);
-    } else {
+        echo json_encode(["status" => 0, "message" => "Enter both username and password"]);
+        exit;
+    }
 
-        $select = "SELECT employer_id, company_name, username, contacts, email_address, industry, location, website, status, user FROM employers 
-                   WHERE username = '$username' AND password = '$password'";
-        $query = mysqli_query($con, $select);
+    $select = "SELECT employer_id, company_name, username, contacts, email_address,
+                      industry, location, website, status, user
+               FROM employers 
+               WHERE username = '$username' AND password = '$password'";
 
-        if (mysqli_num_rows($query) > 0) {
-            while ($row = mysqli_fetch_array($query)) {
+    $query = mysqli_query($con, $select);
 
-                if ($row['status'] == 'Pending approval') {
-                    $response["status"] = 2;
-                    $response["message"] = "Please wait for your account to be approved";
-                    echo json_encode($response);
+    // Debug any SQL error
+    if (!$query) {
+        echo json_encode(["status" => 0, "message" => mysqli_error($con)]);
+        exit;
+    }
 
-                } elseif ($row['status'] == 'Rejected') {
-                    $response["status"] = 2;
-                    $response["message"] = "Account rejected. You cannot access your account.\n" . $row['remarks'];
-                    echo json_encode($response);
+    if (mysqli_num_rows($query) > 0) {
 
-                } elseif ($row['status'] == 'Approved') {
-                    $response['status'] = "1";
-                    $response['details'] = array();
-                    $response["message"] = "Login successful";
+        $row = mysqli_fetch_assoc($query);
 
-                    $index['employerID'] = $row['employer_id'];
-                    $index['companyName'] = $row['company_name'];
-                    $index['username'] = $row['username'];
-                    $index['contacts'] = $row['contacts'];
-                    $index['emailAddress'] = $row['email_address'];
-                    $index['industry'] = $row['industry'];
-                    $index['website'] = $row['website'];
-                    $index['user'] = $row['user'];
-
-                    array_push($response['details'], $index);
-                    echo json_encode($response);
-                }
-            }
-        } else {
-            $response["status"] = 0;
-            $response["message"] = "Please confirm your username and password";
-            echo json_encode($response);
+        if ($row['status'] == 'Pending approval') {
+            echo json_encode(["status" => 2, "message" => "Please wait for your account to be approved"]);
+            exit;
         }
+
+        if ($row['status'] == 'Rejected') {
+            echo json_encode(["status" => 2, "message" => "Account rejected. You cannot access your account."]);
+            exit;
+        }
+
+        if ($row['status'] == 'Approved') {
+
+            $response['status'] = "1";
+            $response["message"] = "Login successful";
+            $response['details'][] = [
+                "employerID" => $row['employer_id'],
+                "companyName" => $row['company_name'],
+                "username" => $row['username'],
+                "contacts" => $row['contacts'],
+                "emailAddress" => $row['email_address'],
+                "industry" => $row['industry'],
+                "website" => $row['website'],
+                "user" => $row['user']
+            ];
+
+            echo json_encode($response);
+            exit;
+        }
+
+    } else {
+        echo json_encode(["status" => 0, "message" => "Please confirm your username and password"]);
     }
 }
