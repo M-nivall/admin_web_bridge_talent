@@ -14,8 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         mysqli_close($con);
     } else {
 
-        $select = "SELECT donor_id, first_name, last_name, username, phone_no, email, status,
-                   date_created, remarks, user FROM donors 
+        $select = "SELECT employer_id, company_name, username, contacts, email_address, industry, location, website, status, user FROM employers 
                    WHERE username='$username' AND password='$password'";
         $query = mysqli_query($con, $select);
 
@@ -37,13 +36,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $response['details'] = array();
                     $response["message"] = "Login successful";
 
-                    $index['clientID'] = $row['donor_id'];
-                    $index['firstname'] = $row['first_name'];
-                    $index['lastname'] = $row['last_name'];
+                    $index['employerID'] = $row['employer_id'];
+                    $index['companyName'] = $row['company_name'];
                     $index['username'] = $row['username'];
-                    $index['phoneNo'] = $row['phone_no'];
-                    $index['email'] = $row['email'];
-                    $index['dateCreated'] = $row['date_created'];
+                    $index['contacts'] = $row['contacts'];
+                    $index['emailAddress'] = $row['email_address'];
+                    $index['industry'] = $row['industry'];
+                    $index['website'] = $row['website'];
                     $index['user'] = $row['user'];
 
                     array_push($response['details'], $index);
