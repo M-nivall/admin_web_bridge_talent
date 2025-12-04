@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
 
         $select = "SELECT employer_id, company_name, username, contacts, email_address, industry, location, website, status, user FROM employers 
-                   WHERE username='$username' AND password='$password'";
+                   WHERE username = '$username' AND password = '$password'";
         $query = mysqli_query($con, $select);
 
         if (mysqli_num_rows($query) > 0) {
