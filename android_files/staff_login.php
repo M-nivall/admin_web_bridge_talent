@@ -18,8 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] =='POST') {
         mysqli_close($con);
     } else {
         // check if username already exists
-        $select = "SELECT emp_id, f_name, l_name, username, contact, email, status,
-       date_added, password,userlevel FROM employees 
+        $select = "SELECT staff_id, f_name, l_name, username, phone, email, status,
+       date_created, password, role FROM employees 
 WHERE username='$username' AND password='$password' AND userlevel = '$staff' ";
         $query = mysqli_query($con, $select);
         if (mysqli_num_rows($query) > 0) {
@@ -28,14 +28,16 @@ WHERE username='$username' AND password='$password' AND userlevel = '$staff' ";
                     $response['status'] = "1";
                     $response['details'] = array();
                     $response["message"] = "Login successful";
-                    $index['clientID']=$row['emp_id'];
+                    
+                    $index['clientID']=$row['staff_id'];
                     $index['firstname']=$row['f_name'];
                     $index['lastname']=$row['l_name'];
                     $index['username']=$row['username'];
-                    $index['phoneNo']=$row['contact'];
+                    $index['phoneNo']=$row['phone'];
                     $index['email']=$row['email'];
-                    $index['dateCreated']=$row['date_added'];
-                    $index['user']=$row['userlevel'];
+                    $index['dateCreated']=$row['date_created'];
+                    $index['user']=$row['role'];
+
                     array_push($response['details'],$index);
                     echo json_encode($response);
                 }
