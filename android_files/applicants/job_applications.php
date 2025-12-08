@@ -8,8 +8,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $userID = $_POST['userID'];
 
 // Creating the query
-$select = "SELECT a.application_id,a.job_id,a.date_applied,a.status,a.employer_feedback,j.title,j.description,j.location,j.job_type,j.salary_range,
-        e.company_name,e.email,e.industry
+$select = "SELECT a.application_id,a.job_id,a.date_applied,a.status,a.employer_feedback,j.title,j.job_description,j.job_location,j.job_type,j.salary_range,
+        e.company_name,e.email_address,e.industry
         FROM applications a
         INNER JOIN jobs j ON a.job_id = j.job_id
         INNER JOIN employers e ON j.employer_id = e.employer_id
@@ -32,13 +32,13 @@ if (mysqli_num_rows($query) > 0) {
         $temp['date_applied'] = $row['date_applied'];
         $temp['application_status'] = $row['status'];
         $temp['title'] = $row['title'];
-        $temp['description'] = $row['description'];
-        $temp['location'] = $row['location'];
+        $temp['description'] = $row['job_description'];
+        $temp['location'] = $row['job_location'];
         $temp['job_type'] = $row['job_type'];
         $temp['salary_range'] = $row['salary_range'];
         //Company Details
         $temp['company_name'] = $row['company_name'];
-        $temp['email'] = $row['email'];
+        $temp['email'] = $row['email_address'];
         $temp['industry'] = $row['industry'];
         $temp['employer_feedback'] = $row['employer_feedback'];
 

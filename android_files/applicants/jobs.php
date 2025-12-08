@@ -6,8 +6,8 @@ include '../../include/connections.php';
 $select = "SELECT 
             j.job_id, 
             j.title, 
-            j.description, 
-            j.location, 
+            j.job_description, 
+            j.job_location, 
             j.job_type, 
             j.salary_range, 
             j.date_posted, 
@@ -37,8 +37,8 @@ if ($records && mysqli_num_rows($records) > 0) {
         // Job details
         $temp['job_id'] = $row['job_id'];
         $temp['title'] = $row['title'];
-        $temp['description'] = $row['description'];
-        $temp['location'] = $row['location'];
+        $temp['description'] = $row['job_description'];
+        $temp['location'] = $row['job_location'];
         $temp['job_type'] = $row['job_type'];
         $temp['salary_range'] = $row['salary_range'];
         $temp['date_posted'] = $row['date_posted'];
