@@ -12,7 +12,6 @@ $records=mysqli_query($con,$select);
 
        while ($row=mysqli_fetch_array($records)){
 
-
     $temp['productID'] = $row['stock_id'];
     $temp['productName'] = $row['product_name'];
     $temp['price'] = $row['price'];
