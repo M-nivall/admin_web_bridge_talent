@@ -7,7 +7,6 @@ require_once '../../include/connections.php';
 
 if ($_SERVER['REQUEST_METHOD'] =='POST'){
 
-
     $client_id = $_POST['clientID'];
     $order_id = $_POST['orderID'];
     $countyID = $_POST['countyID'];
