@@ -19,8 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] =='POST') {
     } else {
         // check if username already exists
         $select = "SELECT staff_id, f_name, l_name, username, phone, email, status,
-       date_created, password, role FROM employees 
-WHERE username='$username' AND password='$password' AND userlevel = '$staff' ";
+       date_created, password, role FROM staff 
+WHERE username='$username' AND password='$password' AND role = '$staff' ";
         $query = mysqli_query($con, $select);
         if (mysqli_num_rows($query) > 0) {
             while ($row=mysqli_fetch_array($query)){
@@ -28,7 +28,7 @@ WHERE username='$username' AND password='$password' AND userlevel = '$staff' ";
                     $response['status'] = "1";
                     $response['details'] = array();
                     $response["message"] = "Login successful";
-                    
+
                     $index['clientID']=$row['staff_id'];
                     $index['firstname']=$row['f_name'];
                     $index['lastname']=$row['l_name'];
