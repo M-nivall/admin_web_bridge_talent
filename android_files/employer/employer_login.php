@@ -61,4 +61,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         echo json_encode(["status" => 0, "message" => "Please confirm your username and password"]);
     }
+    
 }
