@@ -48,6 +48,7 @@ if (mysqli_num_rows($query) > 0) {
         $temp['amount'] = $row['amount'];
         $temp['payment_method'] = $row['payment_method'];
         $temp['transaction_code'] = $row['transaction_code'];
+        $temp['payment_status'] = $row['payment_status'];
 
         array_push($results['details'], $temp);
     }
