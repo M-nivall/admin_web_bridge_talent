@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 // Creating the query
 $select = "SELECT j.job_id,j.title,j.job_category,j.job_level,j.job_description,j.qualifications,j.job_responsibilities,
         j.job_location,j.job_type,j.salary_range,j.date_posted, j.deadline,j.job_status,e.company_name,e.contacts,
-        p.amount,p.payment_method,p.transaction_code
+        p.amount,p.payment_method,p.transaction_code,payment_status
         FROM jobs j
         INNER JOIN employers e ON j.employer_id = e.employer_id
         INNER JOIN payments p ON j.job_id = p.job_id
