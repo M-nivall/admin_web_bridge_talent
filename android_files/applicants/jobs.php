@@ -21,7 +21,7 @@ $select = "SELECT
             e.description AS employer_description
         FROM jobs j
         INNER JOIN employers e ON j.employer_id = e.employer_id 
-        WHERE e.status = 'Approved'";
+        WHERE j.job_status = 'Active'";
 
 $records = mysqli_query($con, $select);
 

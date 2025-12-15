@@ -14,7 +14,7 @@ $select = "SELECT j.job_id,j.title,j.job_category,j.job_level,j.job_description,
         FROM jobs j
         INNER JOIN employers e ON j.employer_id = e.employer_id
         INNER JOIN payments p ON j.job_id = p.job_id
-        WHERE p.payment_status = 'Approved' AND j.job_status = 'Payment Approved'
+        WHERE p.payment_status = 'Approved' AND j.job_status = 'Active'
         ORDER BY j.job_id DESC";
 
 $query = mysqli_query($con, $select);
