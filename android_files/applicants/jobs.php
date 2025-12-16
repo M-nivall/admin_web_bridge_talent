@@ -63,5 +63,4 @@ if ($records && mysqli_num_rows($records) > 0) {
 // Output JSON response
 header('Content-Type: application/json');
 echo json_encode($results);
-
 ?>
