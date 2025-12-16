@@ -140,5 +140,4 @@ include('dbconnect.php');
   <script src="js/settings.js"></script>
   <script src="js/todolist.js"></script>
 </body>
-
 </html>
