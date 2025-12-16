@@ -2,7 +2,6 @@
 
 include '../../include/connections.php';
 
-
 $clientID=$_POST['userID'];
 
 //creating a query
