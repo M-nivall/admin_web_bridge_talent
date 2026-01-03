@@ -3,7 +3,6 @@ session_start();
 //error_reporting(E_ERROR);
 include('include/connections.php');
 
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
