@@ -44,8 +44,7 @@ include('include/connections.php');
                   <h4 class="card-title">Payment Details </h4>
                  
                  
-                 
-                                            
+                                                            
                                             <?php
                     $select="SELECT * FROM clients c INNER JOIN bookings o on c.client_id = o.client_id
                        RIGHT JOIN service_payment p on o.order_id = p.order_id WHERE  o.order_id=".$_GET['get'];
