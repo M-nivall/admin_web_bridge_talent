@@ -51,8 +51,7 @@ include('include/connections.php');
                        RIGHT JOIN payment p on o.order_id = p.order_id WHERE  o.order_id=".$_GET['get'];
         $query=mysqli_query($con,$select);
        $row=mysqli_fetch_array($query);
-                    ?>
-                          
+                    ?>   
                             <table class="table">
                                   <tbody>
                                     <tr><td><b>Paid By </b></td><td><?php print $row['first_name']." ".$row['last_name']?></td></tr>
