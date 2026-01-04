@@ -141,5 +141,4 @@ $job_id = intval($_GET['get']);
   </script>
   <!-- End custom js for this page-->
 </body>
-
 </html>
