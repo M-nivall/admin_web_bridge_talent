@@ -58,8 +58,8 @@ include('include/connections.php');
                                 <tbody>
                                        <?php
                                                $select="SELECT * FROM applicants a 
-                                               INNER JOIN feedback f on a.applicant_id = f.sender_id   
-                                               WHERE NOT f.message!=''";
+                                               INNER JOIN feedback f on a.applicant_id = f.client_id   
+                                               ";
                                                $query=mysqli_query($con,$select);
                                             while($row=mysqli_fetch_array($query)){
                                                 ?>
@@ -68,9 +68,9 @@ include('include/connections.php');
                                                 <td><?php echo $row['fb_id']?> </td>
                 <td><?php echo $row['first_name']. ' '. $row['last_name']?> </td>
                 <td> <?php echo $row['phone']?></td>
-                <td><?php echo $row['message']?> </td>
-                <td><?php echo $row['reply']?> </td>
-                <td><?php echo $row['receiver_id']?> </td>
+                <td><?php echo $row['comment']?> </td>
+                <td><?php echo $row['fb']?> </td>
+                <td><?php echo $row['staff_id']?> </td>
                                                     
                                                 </tr>
                                                 <?php

@@ -11,11 +11,11 @@ if ($_SERVER['REQUEST_METHOD'] =='POST') {
     $userID = $_POST['userID'];
 
 
-    $select = "SELECT * FROM employees WHERE emp_id='$userID'";
+    $select = "SELECT * FROM staff WHERE staff_id='$userID'";
           $rep = mysqli_query($con, $select);
           $row = mysqli_fetch_array($rep);
 
-          $userlevel= $row['userlevel']; 
+          $userlevel= $row['role']; 
   
     $insert="UPDATE feedback SET fb = '$feedback' 
         WHERE staff_id = '$userlevel'";

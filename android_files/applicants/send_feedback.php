@@ -8,10 +8,11 @@ if ($_SERVER['REQUEST_METHOD'] =='POST') {
 
     $feedback = $_POST['feedback'];
     $userID = $_POST['userID'];
+    $userType = $_POST['userType'];
     $recipient = $_POST['recipient'];
 
-    $insert="INSERT INTO feedback(comment,client_id,staff_id)VALUES 
-                  ('$feedback','$userID','$recipient')";
+    $insert="INSERT INTO feedback(comment,client_id,staff_id,user_type)VALUES 
+                  ('$feedback','$userID','$recipient','$userType')";
     if(mysqli_query($con,$insert)){
     $response["status"] = 1;
     $response["message"] = "Sent";

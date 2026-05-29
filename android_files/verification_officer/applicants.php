@@ -46,6 +46,7 @@ $sql = "
     FROM applications a
     INNER JOIN applicants p ON a.applicant_id = p.applicant_id
     WHERE a.job_id = ?
+    AND a.verification = 'Pending Verification'
     ORDER BY a.application_id DESC
 ";
 

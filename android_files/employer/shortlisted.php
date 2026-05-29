@@ -30,6 +30,7 @@ $sql = "
         a.applicant_id,
         a.cv_url,
         a.cover_letter,
+        a.certificate_url,
         a.salary,
         a.notice_period,
         a.date_applied,
@@ -44,7 +45,7 @@ $sql = "
         p.profile_url
     FROM applications a
     INNER JOIN applicants p ON a.applicant_id = p.applicant_id
-    WHERE a.job_id = ? AND a.status = 'Shortlisted'
+    WHERE a.job_id = ? AND a.status IN('Shortlisted', 'Accepted')
     ORDER BY a.application_id DESC
 ";
 
@@ -77,6 +78,7 @@ if ($result->num_rows > 0) {
             "applicant_id"        => $row['applicant_id'],
             "cv_url"              => $row['cv_url'],
             "cover_letter"        => $row['cover_letter'],
+            "certificate_url"        => $row['certificate_url'],
             "salary"              => $row['salary'],
             "notice_period"       => $row['notice_period'],
             "date_applied"        => $row['date_applied'],
@@ -93,7 +95,7 @@ if ($result->num_rows > 0) {
 
 } else {
     $response['status'] = 0;
-    $response['message'] = "No applicants found";
+    $response['message'] = "No Record found";
 }
 
 $stmt->close();
